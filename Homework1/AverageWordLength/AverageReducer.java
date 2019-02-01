@@ -15,11 +15,13 @@ public class AverageReducer extends Reducer<Text, IntWritable, Text, DoubleWrita
 	  Double wls = 0.0;
 	  Double cnt = 0.0;
 	  
+	  // loop over and sum up words
 	  for(IntWritable wl : values)
 	  {
 		  wls += wl.get();
 		  cnt++;
 	  }
+	  //writes average with key
 	  context.write(key,  new DoubleWritable(wls / cnt));
   }
 }
